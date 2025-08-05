@@ -4,16 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Inicio del Juego</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-<!-- Componentes -->
+    <!-- Scripts en orden correcto -->
+<script src="js/main.js"></script>
 <script src="components/PixelKids.js" defer></script>
 <script src="components/StartScreen.js" defer></script>
+<script src="components/SelectPixel.js" defer></script>
 </head>
-<body class="" min-h-screen flex flex-col items-center justify-center gap-10 p-8">
-
+<body>
+<!-- Solo se muestra el selector al inicio -->
     <pixel-kids></pixel-kids>
     <inicio-juego></inicio-juego>
-
+    <select-character></select-character>
 </body>
 </html>
