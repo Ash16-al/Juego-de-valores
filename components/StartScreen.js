@@ -1,5 +1,5 @@
 class StartScreen extends HTMLElement {
-  connectedCallback() {
+connectedCallback() {
     const personaje = localStorage.getItem("personajeSeleccionado");
 
     let personajeHTML = "";
@@ -20,16 +20,7 @@ class StartScreen extends HTMLElement {
     }
 
     this.innerHTML = `
-    <div class="relative min-h-screen overflow-hidden bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800 text-white flex flex-col items-center justify-center px-6 py-12">
-
-        <!-- Fondo decorativo pixelado -->
-        <div class="absolute inset-0 z-0 pointer-events-none">
-            <img src="./img/Gemini_Generated_Image_nbjwcqnbjwcqnbjw.png" 
-                class="w-full h-full object-cover opacity-20" 
-                style="image-rendering: pixelated;" 
-                alt="Fondo decorativo">
-        </div>
-
+    <div div id="intro" class="h-screen bg-gradient-to-br from-blue-900 to-indigo-800 text-white flex flex-col items-center justify-center gap-10 text-center px-6">
         <!-- Contenido principal -->
         <div class="relative z-10 w-full max-w-4xl flex flex-col items-center space-y-8 text-center">
             <h1 class="text-6xl font-extrabold drop-shadow-lg leading-tight">🎮 ¡Ups, Teacher!</h1>
