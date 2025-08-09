@@ -50,6 +50,7 @@ class PasoUnoDos extends HTMLElement {
 }
 customElements.define('es-uno-dos', PasoUnoDos);
  
+
 // Funciones globales
 function validarPaso1(opcion) {
   const feedback = document.getElementById("feedback1");
