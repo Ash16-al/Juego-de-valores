@@ -26,11 +26,11 @@ class PasoUnoDos extends HTMLElement {
 
       <div id="paso3" class="text-center hidden animate-fadeIn">
        <h2 class="text-4xl font-bold mb-4">🧩 PASO 3 – CONSIDERAR METAS</h2>
-      <p>¿Qué puede pasar?</p>
+      <p>¿Qué quieres lograr?</p>
       <div class="flex flex-col gap-3">
-      <button onclick="validarPaso3('A')" class="opcion-btn">A. Teacher Walter lo toma como broma</button>
-            <button onclick="validarPaso3('B')" class="opcion-btn">B. Podés perder puntos o recibir un llamado de atención</button>
-            <button onclick="validarPaso3('C')" class="opcion-btn">C. Te toca hablar con Coordinación</button>
+      <button onclick="validarPaso3('A')" class="opcion-btn">A. Que no pase a mas.</button>
+            <button onclick="validarPaso3('B')" class="opcion-btn">B. Que teacher Walter entienda tu punto.</button>
+            <button onclick="validarPaso3('C')" class="opcion-btn">C. Que nadie se entere jamás.</button>
       </div>
       <p id="feedback3" class="mt-6 text-xl font-semibold"></p>
       </div>
@@ -41,8 +41,8 @@ class PasoUnoDos extends HTMLElement {
       <div class="flex flex-col gap-3">
       <button onclick="validarPaso4('A')" class="opcion-btn">A.  Borrás el mensaje y hacés como si nada
       </button>
-            <button onclick="validarPaso4('C')" class="opcion-btn">B. Le escribís una disculpa</button>
-            <button onclick="validarPaso4('B')" class="opcion-btn">C. Mandás un sticker gracioso que diga "ja ja es broma"</button>
+            <button onclick="validarPaso4('C')" class="opcion-btn">C. Mandás un sticker gracioso que diga "ja ja es broma"</button>
+            <button onclick="validarPaso4('B')" class="opcion-btn"> B. Le escribís una disculpa</button>
       </div>
       <p id="feedback4" class="mt-6 text-xl font-semibold"></p><br>
       <img src="" alt="Feedback Image" id="imagen" class="w-64 h-50 mx-auto block hidden rounded" />
