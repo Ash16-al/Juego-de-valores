@@ -23,6 +23,31 @@ class PasoUnoDos extends HTMLElement {
           </div>
           <p id="feedback2" class="mt-6 text-xl font-semibold"></p>
         </div>
+
+      <div id="paso3" class="text-center hidden animate-fadeIn">
+       <h2 class="text-4xl font-bold mb-4">🧩 PASO 3 – CONSIDERAR METAS</h2>
+      <p>¿Qué puede pasar?</p>
+      <div class="flex flex-col gap-3">
+      <button onclick="validarPaso3('A')" class="opcion-btn">A. Teacher Walter lo toma como broma</button>
+            <button onclick="validarPaso3('B')" class="opcion-btn">B. Podés perder puntos o recibir un llamado de atención</button>
+            <button onclick="validarPaso3('C')" class="opcion-btn">C. Te toca hablar con Coordinación</button>
+      </div>
+      <p id="feedback3" class="mt-6 text-xl font-semibold"></p>
+      </div>
+
+      <div id="paso4" class="text-center hidden animate-fadeIn">
+       <h2 class="text-4xl font-bold mb-4">🧩 PASO 4 – BUSCAR ALTERNATIVAS</h2>
+      <p>¿Qué hacés ahora?</p>
+      <div class="flex flex-col gap-3">
+      <button onclick="validarPaso4('A')" class="opcion-btn">A.  Borrás el mensaje y hacés como si nada
+      </button>
+            <button onclick="validarPaso4('C')" class="opcion-btn">B. Le escribís una disculpa</button>
+            <button onclick="validarPaso4('B')" class="opcion-btn">C. Mandás un sticker gracioso que diga "ja ja es broma"</button>
+      </div>
+      <p id="feedback4" class="mt-6 text-xl font-semibold"></p><br>
+      <img src="" alt="Feedback Image" id="imagen" class="w-64 h-50 mx-auto block hidden rounded" />
+      
+      </div>
       </div>
  
       <style>
@@ -70,9 +95,44 @@ function validarPaso2(opcion) {
   if (opcion === 'B') {
     feedback.textContent = "✅ B → Es posible que tengas consecuencias, pero todo depende de cómo respondas.";
     setTimeout(() => {
+      document.getElementById('paso2').classList.add('hidden')
+      document.getElementById('paso3').classList.remove('hidden')
     }, 1500);
   } else {
     feedback.textContent = "❌ No es la mejor opción. Pensalo de nuevo.";
   }
+};
+
+function validarPaso3(opcion){
+  const feedback = document.getElementById('feedback3')
+  if(opcion === 'A'){
+    feedback.textContent = '✅ A → Buena decisión, buscar resolver con madurez.';
+    setTimeout(()=> {
+      document.getElementById('paso3').classList.add('hidden')
+      document.getElementById('paso4').classList.remove('hidden')
+    },1500)
+  } else{
+    feedback.textContent = "❌ No es la mejor opción. Pensalo de nuevo."
+  }
+};
+
+function validarPaso4(opcion){
+  const feedback = document.getElementById('feedback4');
+  const imagen = document.getElementById('imagen');
+
+  if(opcion === 'B'){
+    feedback.textContent = '✅ RUTA B – PEDIR DISCULPAS';
+    imagen.src = '/img/ChatGPT Image 9 ago 2025, 19_22_48.png';
+    imagen.classList.remove('hidden');
+
+  } else if(opcion === 'A'){
+    feedback.textContent = 'Lo eliminás rápido. Pero 🔔 "Teacher Walter ha leído tu mensaje"';
+    imagen.src = '/img/ChatGPT Image 9 ago 2025, 18_31_33.png';
+    imagen.classList.remove('hidden');
+
+  } else {
+    feedback.textContent = '🔀 RUTA C – USAR STICKER GRACIOSO';
+    imagen.src = '/img/ChatGPT Image 9 ago 2025, 19_27_56.png'
+    imagen.classList.remove('hidden');
+  }
 }
- 
