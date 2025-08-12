@@ -143,8 +143,8 @@ class PasoUnoDos extends HTMLElement {
           z-index: 10;
         }
       </style>
-
-      <div class="fondo-dinamico">
+      <div class="hidden" id="cuestionario">
+      <div class="fondo-dinamico hidden" id="fondo">
         <div id="decoraciones"></div>
 
         <div id="vidas" aria-live="polite" aria-atomic="true">❤️❤️❤️</div>
@@ -191,10 +191,84 @@ class PasoUnoDos extends HTMLElement {
             <button onclick="validarPaso4('B')" class="opcion-btn">C. Le escribís una disculpa</button>
           </div>
           <p id="feedback4" aria-live="polite"></p>
-          <img id="imagen" alt="Imagen de feedback" class="hidden" />
+          <div class="flex justify-center items-center pb-30">
+           <img id="imagen" alt="Imagen de feedback" class="hidden justify-center block w-40 h-50" />
+           <button id="end" class="hidden opcion-btn">Finalizar aventura</button>
+          </div>
+         
+        </div>
         </div>
 
         <p id="fin"></p>
+      </div>
+      <!--Parte de la reflexión-->
+      <!-- Pantalla 1 -->
+      <div id="pantalla1" class="pantalla hidden flex flex-col justify-center items-center h-screen bg-blue-950 text-white text-center space-y-6">
+        <h1 class="text-6xl font-bold">🌟FELICIDADES LLEGASTE AL FINAL🌟</h1>
+        <button id="result" class="bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-lg text-lg  transition duration-300 shadow-lg">
+          Ver resultados
+        </button>
+      </div>
+
+      <!-- Pantalla 2 -->
+      <div id="pantalla2" class="pantalla hidden flex-col justify-center items-center h-screen bg-blue-800 text-white text-center space-y-6">
+        <h2 class="text-4xl font-bold">- REFLEXIONA -</h2>
+        <p class="text-xl">¿Qué aprendiste de esta experiencia?</p>
+        <div class="bg-blue-900 border-2 border-white rounded-xl p-6 max-w-3xl font-semibold text-lg space-y-4">
+          <p>✅ "Un error no define quién eres, pero tu valentía para admitirlo y repararlo sí"</p>
+          <p>
+            Aceptar nuestros errores es reconocer que no somos perfectos, pero sí capaces de mejorar.<br>
+            Es entender que cada fallo es una lección disfrazada de tropiezo.<br>
+            Es dejar el orgullo a un lado para darle paso a la humildad y al aprendizaje.<br>
+            Porque solo quien asume su responsabilidad puede crecer de verdad.
+          </p>
+        </div>
+        <div class="flex space-x-4 mt-6">
+          <button id="screen3" class="bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-lg text-lg transition duration-300 shadow-lg">
+            Siguiente
+          </button>
+        </div>
+      </div>
+
+      <!-- Pantalla 3 -->
+      <div id="pantalla3" class="pantalla hidden flex-col justify-center items-center h-screen bg-blue-900 text-white text-center space-y-5">
+        <h2 class="text-4xl font-bold"> - TOMA DECISIONES -</h2>
+        <p class="text-xl">¿Qué harías la próxima vez?</p>
+        <ul class="text-lg text-3xl font-bold space-y-2">
+          <li>A. Ignorar el problema</li>
+          <li>B. Hacerte la victima</li>
+          <li>C. Pedir disculpas sinceras</li>
+          <li>😃Quien asume su responsabilidad, conquista el respeto de los demás y la paz consigo mismo.😃</li>
+        </ul>
+        <button id="screen4" class="mt-6 bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-lg text-lg transition duration-300 shadow-lg">
+          Siguiente
+        </button>
+      </div>
+
+      <!-- Pantalla 4 -->
+      <div id="pantalla4" class="pantalla hidden h-screen text-black">
+        <div class="flex h-full items-center justify-center">
+          <img src="Img/Niña sonrriente.png" alt="Imagen izquierda" class="h-[80vh] object-cover rounded-xl shadow-xl mx-4" />
+          <div class="text-center max-w-xl px-6">
+            <h2 class="text-4xl font-bold mb-4">🎉 "¡Recuerda!" 🎉</h2>
+            <p class="text-lg text-3xl font-bold">🌟Si alguna vez te equivocas, no pierdas tiempo buscando culpables ni excusas. Mira de frente tu error, reconoce el daño y repara lo que esté en tus manos.
+Pedir perdón no disminuye tu valor, lo engrandece🌟</p>
+            <button id="screen5" class="mt-6 bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-lg text-lg transition duration-300 shadow-lg">
+              Siguiente
+            </button>
+          </div>
+          <img src="Img/Niño sonrriente.png" alt="Imagen derecha" class="h-[80vh] object-cover rounded-xl shadow-xl mx-4" />
+        </div>
+      </div>
+
+      <!-- Pantalla 5 -->
+      <div id="pantalla5" class="pantalla hidden h-screen bg-white relative overflow-hidden flex items-center justify-center">
+        <div class="flex flex-col items-center justify-center z-10 text-center space-y-6">
+          <h2 class="text-4xl font-bold">🎈 ¡MUCHAS 🌟FELICIDADES SUPERASTE ESTE RETO! 🎈</h2>
+          <button id="main" class="bg-green-400 hover:bg-green-500 text-white px-6 py-3 rounded-lg text-lg transition duration-300 shadow-lg">
+            Volver al inicio
+          </button>
+        </div>
       </div>
     `;
 
@@ -202,7 +276,7 @@ class PasoUnoDos extends HTMLElement {
     let vidas = 3;
     const fin = this.querySelector('#fin');
     const vidasElemento = this.querySelector('#vidas');
-
+    const cuestio = this.querySelector('#cuestionario').classList.remove('hidden')
     // Decoraciones
     function decoracionesPixeladas() {
       const cantidad = 15;
@@ -323,22 +397,26 @@ class PasoUnoDos extends HTMLElement {
       if (vidas <= 0) return;
       const feedback = componente.querySelector('#feedback4');
       const imagen = componente.querySelector('#imagen');
+      const boton = componente.querySelector('#end')
       limpiarFeedback();
       if (opcion === 'B') {
         feedback.textContent = '✅ RUTA B – PEDIR DISCULPAS';
         feedback.classList.add('correcto');
         imagen.src = '/img/ChatGPT Image 9 ago 2025, 19_22_48.png';
         imagen.classList.remove('hidden');
+        boton.classList.remove('hidden')
       } else if (opcion === 'A') {
         feedback.textContent = 'Lo eliminás rápido. Pero 🔔 "Teacher Walter ha leído tu mensaje"';
         feedback.classList.add('error');
         imagen.src = '/img/ChatGPT Image 9 ago 2025, 18_31_33.png';
         imagen.classList.remove('hidden');
+        boton.classList.remove('hidden')
       } else {
         feedback.textContent = '🔀 RUTA C – USAR STICKER GRACIOSO';
         feedback.classList.add('error');
         imagen.src = '/img/ChatGPT Image 9 ago 2025, 19_27_56.png';
         imagen.classList.remove('hidden');
+        boton.classList.remove('hidden')
       }
     };
 
@@ -363,6 +441,50 @@ class PasoUnoDos extends HTMLElement {
         }, 4000);
       }
     }
+    const boton = this.querySelector('#end')
+    boton.addEventListener('click',() =>{
+      const página = this.querySelector('#pantalla1')
+      página.classList.remove('hidden')
+      const cuesi = this.querySelector('#cuestionario')
+      cuesi.classList.add('hidden')
+    })
+    const uno = this.querySelector('#result')
+    const dos = this.querySelector('#screen3')
+    const tres=  this.querySelector('#screen4')
+    const cuatro = this.querySelector('#screen5')
+    const main = this.querySelector('#main')      
+
+    uno.addEventListener('click',() => {
+      const pant = this.querySelector('#pantalla2')
+      const panta = this.querySelector('#pantalla1')
+      pant.classList.remove('hidden')
+      panta.classList.add('hidden')
+    })
+    dos.addEventListener('click',() => {
+      const pant = this.querySelector('#pantalla3')
+       const panta = this.querySelector('#pantalla2')
+      pant.classList.remove('hidden')
+      panta.classList.add('hidden')
+    })
+    tres.addEventListener('click',() => {
+      const pant = this.querySelector('#pantalla4')
+       const panta = this.querySelector('#pantalla3')
+       pant.classList.remove('hidden')
+      panta.classList.add('hidden')
+    })
+    cuatro.addEventListener('click',() => {
+      const pant = this.querySelector('#pantalla5')
+      const panta = this.querySelector('#pantalla4')
+      pant.classList.remove('hidden')
+      panta.classList.add('hidden')
+    })
+
+    main.addEventListener('click',()=>{
+      location.reload();
+    })
+    
+
+
   }
 }
 
