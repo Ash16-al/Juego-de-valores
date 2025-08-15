@@ -3,16 +3,52 @@ class PasoUnoDos extends HTMLElement {
     this.innerHTML = `
   <style>
     /* =================== ESTILOS DEL JUEGO =================== */
-    @keyframes fondoAnimado { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-    .fondo-dinamico { background: linear-gradient(-45deg, #1e3a8a, #3b82f6, #6366f1, #1e40af); background-size: 400% 400%; animation: fondoAnimado 15s ease infinite; height: 100vh; width: 100vw; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3rem; padding: 3rem 6rem; color: white; overflow: visible; position: relative; font-family: Arial, sans-serif; text-align: center; }
+    
+    .fondo-dinamico {
+      background-image: url('/img/fondo..png'); 
+      background-size: cover;          
+      background-repeat: no-repeat;    
+      background-position: center;
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      padding: 3rem 6rem;
+      color: white;
+      overflow: visible;
+      position: relative;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .fondo-dinamico::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(70, 70, 70, 0.4), rgba(70, 70, 70, 0.4));
+  z-index: 5;
+  pointer-events: none;
+}
+
+
     .decorativo { position: absolute; opacity: 0.6; animation: flotar 6s ease-in-out infinite; pointer-events: none; z-index: 0; }
     @keyframes flotar { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
-    .opcion-btn { background-color: #4f46e5; padding: 1.25rem 2.5rem; border-radius: 0.75rem; font-weight: bold; font-size: 1.5rem; transition: all 0.3s ease; cursor: pointer; user-select: none; border: none; color: white; box-shadow: 0 5px 10px rgba(0,0,0,0.3); z-index: 10; max-width: 100%; white-space: normal; }
+    .opcion-btn { background-color: #1ea54fff; padding: 1.25rem 2.5rem; border-radius: 0.75rem; font-weight: bold; font-size: 1.5rem; transition: all 0.3s ease; cursor: pointer; user-select: none; border: none; color: white; box-shadow: 0 5px 10px rgba(0,0,0,0.3); z-index: 10; max-width: 100%; white-space: normal; }
     .opcion-btn:hover:not(.disabled) { background-color: #6366f1; transform: scale(1.05); }
     .disabled { pointer-events: none; opacity: 0.5; }
     .animate-fadeIn { animation: fadeIn 0.6s ease-in-out; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    #vidas { font-size: 3rem; font-weight: 700; user-select: none; z-index: 10; text-shadow: 0 0 10px rgba(255,0,0,0.7); animation: pulse 1s infinite; }
+    #titulo{
+    background-color: #2b312dff
+    }
+    #vidas { font-size: 3rem; font-weight: 700; user-select: none; z-index: 10; text-shadow: 0 0 5px #ff0000,
+    0 0 10px #dd4545ff,
+    0 0 15px #d63a3aff,
+    0 0 20px #ff0000;; animation: pulse 1s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
     h2 { font-size: 2.5rem; text-shadow: 0 0 8px rgba(0,0,0,0.7); margin-bottom: 1rem; }
     p { font-size: 1.5rem; min-height: 2em; margin-top: 1rem; padding: 0.5rem 1.5rem; border-radius: 0.5rem; font-weight: 600; max-width: 900px; margin-left: auto; margin-right: auto; word-break: break-word; background-color: rgba(0, 0, 0, 0.25); box-shadow: 0 0 10px rgba(0,0,0,0.3); }
@@ -28,7 +64,7 @@ class PasoUnoDos extends HTMLElement {
     .btn-reflexion { background: linear-gradient(90deg,#4f46e5,#3b82f6,#6366f1); color:white; font-weight:bold; padding:1rem 2rem; border-radius:0.75rem; font-size:1.25rem; cursor:pointer; transition: all 0.3s ease; box-shadow:0 5px 10px rgba(0,0,0,0.3); }
     .btn-reflexion:hover { transform: scale(1.05); background: linear-gradient(90deg,#6366f1,#3b82f6,#4f46e5); }
     .reflexion-contenedor { background: rgba(0,0,0,0.25); padding:2rem; border-radius:1rem; max-width:900px; box-shadow:0 0 15px rgba(0,0,0,0.3); }
-    .reflexion-img { width: 20rem; max-width: 80vw; border-radius:0.75rem; box-shadow:0 0 15px rgba(0,0,0,0.5); }
+    .reflexion-img { width: 20rem; max-width: 80vw; border-radius:0.75rem; box-shadow:0 0 15px rgba(95, 94, 94, 0.5); }
   </style>
 
   <!-- =================== JUEGO =================== -->
@@ -38,8 +74,9 @@ class PasoUnoDos extends HTMLElement {
       <div id="vidas" aria-live="polite" aria-atomic="true">❤️❤️❤️</div>
 
       ${[1,2,3,4,5,6,7,8,9,10].map(paso => `
-        <div id="paso${paso}" class="${paso===1?'animate-fadeIn':'hidden animate-fadeIn'}" style="z-index:10;">
-          <h2>🧩 PASO ${paso} – ${
+        <div id="paso${paso}" class="${paso===1?'animate-fadeIn':'hidden animate-fadeIn '}" style="z-index:10;">
+        <div class="border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
+          <h2 id="titulo">🧩 PASO ${paso} – ${
             ["RECONOCER EL PROBLEMA","ANALIZAR EL PROBLEMA","CONSIDERAR METAS","BUSCAR ALTERNATIVAS","EVALUAR CONSECUENCIAS","ELEGIR ACCIÓN","PEDIR AYUDA","RESOLVER CONFLICTOS","APRENDER DE LA EXPERIENCIA","CERRAR LA SITUACIÓN"][paso-1]
           }</h2>
           <p>${
@@ -64,10 +101,11 @@ class PasoUnoDos extends HTMLElement {
               }).join('')
             }
           </div>
-          ${paso===4?`<img id="imagen" src="" alt="Paso 4 imagen">`:``}
+          </div>
+          ${paso===4?`<img id="imagen" src="" alt="Paso 4 imagen" class="ml-60">`:``}
           <p id="feedback${paso}" aria-live="polite"></p>
           ${paso===10?`<div class="flex justify-center items-center pb-10" style="z-index:20;">
-            <button id="end" class="opcion-btn hidden">Finalizar aventura</button>
+            <button id="end" class="opcion-btn hidden mt-4">Finalizar aventura</button>
           </div>`:""}
         </div>
       `).join('')}
@@ -77,14 +115,14 @@ class PasoUnoDos extends HTMLElement {
   </div>
 
   <!-- =================== REFLEXIÓN =================== -->
-  <div id="reflexion" class="hidden">
+  <div id="reflexion" class="hidden ">
     <div class="pantalla fondo-dinamico">
       <h1 class="text-6xl font-bold drop-shadow-lg">🌟FELICIDADES LLEGASTE AL FINAL🌟</h1>
       <p class="mt-4">¡Gran trabajo completando todos los pasos!</p>
     </div>
     <div class="pantalla fondo-dinamico">
       <h2 class="text-4xl font-bold drop-shadow-md">- REFLEXIONA -</h2>
-      <div class="reflexion-contenedor mt-4">
+      <div class="border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
         <p>✅ "Un error no define quién eres, pero tu valentía para admitirlo y repararlo sí"</p>
         <p>
           Aceptar nuestros errores es reconocer que no somos perfectos, pero sí capaces de mejorar.<br>
@@ -134,7 +172,7 @@ class PasoUnoDos extends HTMLElement {
     const btnFinalizar = this.querySelector('#end');
 
     function decoracionesPixeladas() {
-      const cantidad = 15;
+      const cantidad = 10;
       const imagenes = [
         "img/image-removebg-preview (3).png",
         "img/image-removebg-preview (4).png",
