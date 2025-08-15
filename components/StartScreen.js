@@ -7,14 +7,14 @@ class StartScreen extends HTMLElement {
       personajeHTML = `
         <div class="flex flex-col items-center">
           <img src="img/image-removebg-preview (1).png" alt="Niño pixelado" class="w-32 h-auto animate-bounce" />
-          <p class="mt-2 text-2xl font-semibold text-blue-300">Elegiste: Niño</p>
+          <p class="mt-2 text-2xl font-semibold text-green-200">Elegiste: Niño</p>
         </div>
       `;
     } else if (personaje === "niña") {
       personajeHTML = `
         <div class="flex flex-col items-center">
           <img src="img/image-removebg-preview (2).png" alt="Niña pixelada" class="w-32 h-auto animate-bounce" />
-          <p class="mt-2 text-2xl font-semibold text-pink-300">Elegiste: Niña</p>
+          <p class="mt-2 text-2xl font-semibold text-green-200">Elegiste: Niña</p>
         </div>
       `;
     }
@@ -28,11 +28,23 @@ class StartScreen extends HTMLElement {
         }
 
         .fondo-dinamico {
-          background: linear-gradient(-45deg, #1e3a8a, #3b82f6, #6366f1, #1e40af);
-          background-size: 400% 400%;
-          animation: fondoAnimado 15s ease infinite;
+          min-height: 100vh;
+          width: 100vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 3rem;
+          padding: 3rem 6rem;
+          color: white;
+          font-family: Arial, sans-serif;
+          text-align: center;
           position: relative;
           overflow: hidden;
+
+          background: linear-gradient(135deg, #1e5631, #4caf50, #a8e6cf, #2e7d32);
+          background-size: 400% 400%;
+          animation: fondoAnimado 15s ease infinite;
         }
 
         @keyframes flotar {
@@ -49,17 +61,33 @@ class StartScreen extends HTMLElement {
           pointer-events: none;
           z-index: 0;
         }
+
+        /* Botón Empezar Juego con degradado verde */
+        #empezarBtn {
+          background: linear-gradient(90deg, #4caf50, #2e7d32);
+          color: white;
+          font-weight: bold;
+          font-size: 1.5rem;
+          padding: 1rem 2rem;
+          border-radius: 1rem;
+          border: none;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+          transition: all 0.3s ease;
+        }
+
+        #empezarBtn:hover {
+          background: linear-gradient(90deg, #71db88, #1e5631);
+          transform: scale(1.05);
+        }
       </style>
 
-      <div id="intro" class="h-screen fondo-dinamico text-white flex flex-col items-center justify-center gap-10 text-center px-6">
+      <div id="intro" class="h-screen fondo-dinamico">
         ${this.decoraciones()}
         <div class="relative z-10 w-full max-w-4xl flex flex-col items-center space-y-8 text-center">
           <h1 class="text-6xl font-extrabold drop-shadow-lg leading-tight">🎮 ¡Ups, Teacher!</h1>
           <p class="text-2xl font-medium max-w-2xl">Mandaste el mensaje equivocado al Teacher Walter... ¿cómo vas a arreglarlo? Tomá decisiones y descubrí tu final. 😱📱</p>
           <div id="personajes" class="mt-6">${personajeHTML}</div>
-          <button id="empezarBtn" class="bg-white text-blue-800 font-bold text-xl px-8 py-4 rounded-full hover:bg-blue-700 hover:text-white transition duration-300 shadow-lg">
-            Empezar Juego
-          </button>
+          <button id="empezarBtn">Empezar Juego</button>
         </div>
       </div>
     `;

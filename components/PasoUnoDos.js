@@ -1,71 +1,132 @@
 class PasoUnoDos extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-  <style>
-    /* =================== ESTILOS DEL JUEGO =================== */
-    
-    .fondo-dinamico {
-      background-image: url('/img/fondo..png'); 
-      background-size: cover;          
-      background-repeat: no-repeat;    
-      background-position: center;
-      min-height: 100vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem;
-      padding: 3rem 6rem;
-      color: white;
-      overflow: visible;
-      position: relative;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    .fondo-dinamico::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(70, 70, 70, 0.4), rgba(70, 70, 70, 0.4));
-  z-index: 5;
-  pointer-events: none;
-}
+      <style>
+        /* =================== ESTILOS DEL JUEGO =================== */
+        
+        .fondo-dinamico {
+          background-image: url('/img/fondo..png'); 
+          background-size: cover;          
+          background-repeat: no-repeat;    
+          background-position: center;
+          min-height: 100vh;
+          width: 100vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 3rem;
+          padding: 3rem 6rem;
+          color: white;
+          overflow: visible;
+          position: relative;
+          font-family: Arial, sans-serif;
+          text-align: center;
+        }
 
+        .fondo-dinamico::after {
+          content: '';
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to bottom, rgba(70, 70, 70, 0.4), rgba(70, 70, 70, 0.4));
+          z-index: 5;
+          pointer-events: none;
+        }
 
-    .decorativo { position: absolute; opacity: 0.6; animation: flotar 6s ease-in-out infinite; pointer-events: none; z-index: 0; }
-    @keyframes flotar { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
-    .opcion-btn { background-color: #1ea54fff; padding: 1.25rem 2.5rem; border-radius: 0.75rem; font-weight: bold; font-size: 1.5rem; transition: all 0.3s ease; cursor: pointer; user-select: none; border: none; color: white; box-shadow: 0 5px 10px rgba(0,0,0,0.3); z-index: 10; max-width: 100%; white-space: normal; }
-    .opcion-btn:hover:not(.disabled) { background-color: #6366f1; transform: scale(1.05); }
-    .disabled { pointer-events: none; opacity: 0.5; }
-    .animate-fadeIn { animation: fadeIn 0.6s ease-in-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    #titulo{
-    background-color: #2b312dff
-    }
-    #vidas { font-size: 3rem; font-weight: 700; user-select: none; z-index: 10; text-shadow: 0 0 5px #ff0000,
-    0 0 10px #dd4545ff,
-    0 0 15px #d63a3aff,
-    0 0 20px #ff0000;; animation: pulse 1s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-    h2 { font-size: 2.5rem; text-shadow: 0 0 8px rgba(0,0,0,0.7); margin-bottom: 1rem; }
-    p { font-size: 1.5rem; min-height: 2em; margin-top: 1rem; padding: 0.5rem 1.5rem; border-radius: 0.5rem; font-weight: 600; max-width: 900px; margin-left: auto; margin-right: auto; word-break: break-word; background-color: rgba(0, 0, 0, 0.25); box-shadow: 0 0 10px rgba(0,0,0,0.3); }
-    .correcto { background-color: #22c55e88; color: #166534; border: 2px solid #16a34a; box-shadow: 0 0 10px #22c55eaa; }
-    .error { background-color: #7c3aed66; color: #ede9fe; border: 2px solid #5b21b6; box-shadow: 0 0 10px #7c3aedaa; }
-    #fin { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #a78bfa; font-size: 3rem; font-weight: 900; text-align: center; text-shadow: 0 0 15px #a78bfaaa; opacity: 0; pointer-events: none; transition: opacity 0.7s ease; z-index: 50; background: rgba(67, 56, 202, 0.85); padding: 1.5rem 3rem; border-radius: 1rem; user-select: none; letter-spacing: 1px; max-width: 90vw; word-break: break-word; }
-    #fin.visible { opacity: 1; pointer-events: auto; }
-    #imagen { width: 24rem; height: auto; border-radius: 0.5rem; margin-top: 1rem; box-shadow: 0 0 15px rgba(0,0,0,0.5); z-index: 10; display:none; }
+        .decorativo {
+          position: absolute;
+          opacity: 0.6; 
+          animation: flotar 6s ease-in-out infinite; 
+          pointer-events: none; 
+          z-index: 0;
+        }
 
-    /* =================== ESTILOS REFLEXIÓN =================== */
-    .hidden { display: none; }
-    .pantalla { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 2rem; gap: 1.5rem; }
-    .btn-reflexion { background: linear-gradient(90deg,#4f46e5,#3b82f6,#6366f1); color:white; font-weight:bold; padding:1rem 2rem; border-radius:0.75rem; font-size:1.25rem; cursor:pointer; transition: all 0.3s ease; box-shadow:0 5px 10px rgba(0,0,0,0.3); }
-    .btn-reflexion:hover { transform: scale(1.05); background: linear-gradient(90deg,#6366f1,#3b82f6,#4f46e5); }
-    .reflexion-contenedor { background: rgba(0,0,0,0.25); padding:2rem; border-radius:1rem; max-width:900px; box-shadow:0 0 15px rgba(0,0,0,0.3); }
-    .reflexion-img { width: 20rem; max-width: 80vw; border-radius:0.75rem; box-shadow:0 0 15px rgba(95, 94, 94, 0.5); }
-  </style>
+        @keyframes flotar {
+          0% { transform: translateY(0); } 
+          50% { transform: translateY(-15px); } 
+          100% { transform: translateY(0); }
+        }
+
+        .opcion-btn {
+          background-color: #2e7d32; /* Verde que combina con la temática */
+          padding: 1.25rem 2.5rem; 
+          border-radius: 0.75rem; 
+          font-weight: bold; 
+          font-size: 1.5rem; 
+          transition: all 0.3s ease; 
+          cursor: pointer; 
+          user-select: none; 
+          border: none; 
+          color: white; 
+          box-shadow: 0 5px 10px rgba(0,0,0,0.3); 
+          z-index: 10; 
+          max-width: 100%; 
+          white-space: normal;
+        }
+
+        .opcion-btn:hover:not(.disabled) {
+          background-color: #71db88ff;
+          transform: scale(1.05);
+        }
+
+        .disabled { pointer-events: none; opacity: 0.5; }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #titulo { background-color: #2b312dff }
+        #vidas {
+          font-size: 3rem; 
+          font-weight: 700; 
+          user-select: none; 
+          z-index: 10; 
+          text-shadow: 0 0 5px #ff0000,
+                       0 0 10px #dd4545ff,
+                       0 0 15px #d63a3aff,
+                       0 0 20px #ff0000; 
+          animation: pulse 1s infinite; 
+        }
+
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+        h2 { font-size: 2.5rem; text-shadow: 0 0 8px rgba(0,0,0,0.7); margin-bottom: 1rem; }
+        p { font-size: 1.5rem; min-height: 2em; margin-top: 1rem; padding: 0.5rem 1.5rem; border-radius: 0.5rem; font-weight: 600; max-width: 900px; margin-left: auto; margin-right: auto; word-break: break-word; background-color: rgba(0, 0, 0, 0.25); box-shadow: 0 0 10px rgba(0,0,0,0.3); }
+        .correcto { background-color: #22c55e88; color: #166534; border: 2px solid #16a34a; box-shadow: 0 0 10px #22c55eaa; }
+        .error { background-color: #7c3aed66; color: #ede9fe; border: 2px solid #5b21b6; box-shadow: 0 0 10px #7c3aedaa; }
+
+        #fin {
+          position: fixed; 
+          top: 50%; left: 50%; 
+          transform: translate(-50%, -50%); 
+          color: #a78bfa; 
+          font-size: 3rem; 
+          font-weight: 900; 
+          text-align: center; 
+          text-shadow: 0 0 15px #a78bfaaa; 
+          opacity: 0; pointer-events: none; 
+          transition: opacity 0.7s ease; 
+          z-index: 50; 
+          background: rgba(67, 56, 202, 0.85); 
+          padding: 1.5rem 3rem; 
+          border-radius: 1rem; 
+          user-select: none; 
+          letter-spacing: 1px; 
+          max-width: 90vw; 
+          word-break: break-word; 
+        }
+
+        #fin.visible { opacity: 1; pointer-events: auto; }
+        #imagen { width: 24rem; height: auto; border-radius: 0.5rem; margin-top: 1rem; box-shadow: 0 0 15px rgba(0,0,0,0.5); z-index: 10; display:none; }
+
+        /* =================== ESTILOS REFLEXIÓN =================== */
+        .hidden { display: none; }
+        .pantalla { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 2rem; gap: 1.5rem; }
+        .btn-reflexion { background: linear-gradient(90deg,#4f46e5,#3b82f6,#6366f1); color:white; font-weight:bold; padding:1rem 2rem; border-radius:0.75rem; font-size:1.25rem; cursor:pointer; transition: all 0.3s ease; box-shadow:0 5px 10px rgba(0,0,0,0.3); }
+        .btn-reflexion:hover { transform: scale(1.05); background: linear-gradient(90deg,#6366f1,#3b82f6,#4f46e5); }
+        .reflexion-contenedor { background: rgba(0,0,0,0.25); padding:2rem; border-radius:1rem; max-width:900px; box-shadow:0 0 15px rgba(0,0,0,0.3); }
+        .reflexion-img { width: 20rem; max-width: 80vw; border-radius:0.75rem; box-shadow:0 0 15px rgba(95, 94, 94, 0.5); }
+      </style>
 
   <!-- =================== JUEGO =================== -->
   <div id="cuestionario">
