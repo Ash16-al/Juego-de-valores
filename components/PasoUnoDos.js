@@ -23,6 +23,13 @@ class PasoUnoDos extends HTMLElement {
           font-family: Arial, sans-serif;
           text-align: center;
         }
+        .fondo-color {
+        background: linear-gradient(135deg, #1e5631, #4caf50, #a8e6cf, #2e7d32);
+        background-size: 400% 400%;
+        animation: fondoAnimado 15s ease infinite;
+        position: relative;
+        overflow: hidden;
+      }
 
         .fondo-dinamico::after {
           content: '';
@@ -176,54 +183,57 @@ class PasoUnoDos extends HTMLElement {
   </div>
 
   <!-- =================== REFLEXIÓN =================== -->
-  <div id="reflexion" class="hidden ">
-    <div class="pantalla fondo-dinamico">
-      <h1 class="text-6xl font-bold drop-shadow-lg">🌟FELICIDADES LLEGASTE AL FINAL🌟</h1>
-      <p class="mt-4">¡Gran trabajo completando todos los pasos!</p>
-    </div>
-    <div class="pantalla fondo-dinamico">
-      <h2 class="text-4xl font-bold drop-shadow-md">- REFLEXIONA -</h2>
-      <div class="border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
-        <p>✅ "Un error no define quién eres, pero tu valentía para admitirlo y repararlo sí"</p>
-        <p>
-          Aceptar nuestros errores es reconocer que no somos perfectos, pero sí capaces de mejorar.<br>
-          Es entender que cada fallo es una lección disfrazada de tropiezo.<br>
-          Es dejar el orgullo a un lado para darle paso a la humildad y al aprendizaje.<br>
-          Porque solo quien asume su responsabilidad puede crecer de verdad.
-        </p>
-      </div>
-      <button class="btn-reflexion mt-6">Siguiente</button>
-    </div>
-    <div class="pantalla fondo-dinamico">
-      <h2 class="text-4xl font-bold drop-shadow-md">- TOMA DECISIONES -</h2>
-      <p class="text-xl">¿Qué harías la próxima vez?</p>
-      <ul class="text-lg font-bold list-disc list-inside mt-4">
-        <li>A. Ignorar el problema</li>
-        <li>B. Hacerte la víctima</li>
-        <li>C. Pedir disculpas sinceras</li>
-        <li>😃Quien asume su responsabilidad, conquista el respeto de los demás y la paz consigo mismo.😃</li>
-      </ul>
-      <button class="btn-reflexion mt-6">Siguiente</button>
-    </div>
-    <div class="pantalla fondo-dinamico md:flex-row gap-6">
-      <img src="Img/Niña sonrriente.png" alt="Imagen izquierda" class="reflexion-img" />
-      <div class="reflexion-contenedor text-center md:text-left">
-        <h2 class="text-4xl font-bold mb-4 drop-shadow-md">🎉 "¡Recuerda!" 🎉</h2>
-        <p class="text-lg font-semibold leading-relaxed">
-          🌟Si alguna vez te equivocas, no pierdas tiempo buscando culpables ni excusas. Mira de frente tu error, reconoce el daño y repara lo que esté en tus manos.<br>
-          Pedir perdón no disminuye tu valor, lo engrandece🌟
-        </p>
-      </div>
-      <img src="Img/Niño sonrriente.png" alt="Imagen derecha" class="reflexion-img" />
-      <button class="btn-reflexion mt-6">Siguiente</button>
-    </div>
-    <div class="pantalla fondo-dinamico">
-      <h2 class="text-4xl font-bold drop-shadow-md">🎈 ¡MUCHAS 🌟FELICIDADES SUPERASTE ESTE RETO! 🎈</h2>
-      <p>Gracias por participar y reflexionar sobre tus acciones.</p>
-      <button class="btn-reflexion mt-6">Volver al inicio</button>
-    </div>
+  <div id="reflexion" class="hidden">
+  <div class="pantalla fondo-color hidden">
+    <h1 class="text-6xl font-bold drop-shadow-lg border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">🌟FELICIDADES LLEGASTE AL FINAL🌟</h1>
+    <p class="mt-4">¡Gran trabajo completando todos los pasos!</p>
+    <button class="btn-reflexion mt-6" id="un">Siguiente</button>
   </div>
+  <div id="uni" class="pantalla fondo-color hidden border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
+    <h2 class="text-4xl font-bold drop-shadow-md">- REFLEXIONA -</h2>
+    <div>
+      <p>✅ "Un error no define quién eres, pero tu valentía para admitirlo y repararlo sí"</p>
+      <p>
+        Aceptar nuestros errores es reconocer que no somos perfectos, pero sí capaces de mejorar.<br>
+        Es entender que cada fallo es una lección disfrazada de tropiezo.<br>
+        Es dejar el orgullo a un lado para darle paso a la humildad y al aprendizaje.<br>
+        Porque solo quien asume su responsabilidad puede crecer de verdad.
+      </p>
+    </div>
+    <button class="btn-reflexion mt-6">Siguiente</button>
+  </div>
+  <div class="pantalla fondo-color hidden border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
+    <h2 class="text-4xl font-bold drop-shadow-md">- TOMA DECISIONES -</h2>
+    <p class="text-xl">¿Qué harías la próxima vez?</p>
+    <ul class="text-lg font-bold list-disc list-inside mt-4">
+      <li>A. Ignorar el problema</li>
+      <li>B. Hacerte la víctima</li>
+      <li>C. Pedir disculpas sinceras</li>
+      <li>😃Quien asume su responsabilidad, conquista el respeto de los demás y la paz consigo mismo.😃</li>
+    </ul>
+    <button class="btn-reflexion mt-6">Siguiente</button>
+  </div>
+  <div class="pantalla fondo-color hidden md:flex-row gap-6 border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
+    <img src="Img/Niña sonrriente.png" alt="Imagen izquierda" class="reflexion-img" />
+    <div class="reflexion-contenedor text-center md:text-left">
+      <h2 class="text-4xl font-bold mb-4 drop-shadow-md">🎉 "¡Recuerda!" 🎉</h2>
+      <p class="text-lg font-semibold leading-relaxed">
+        🌟Si alguna vez te equivocas, no pierdas tiempo buscando culpables ni excusas. Mira de frente tu error, reconoce el daño y repara lo que esté en tus manos.<br>
+        Pedir perdón no disminuye tu valor, lo engrandece🌟
+      </p>
+    </div>
+    <img src="Img/Niño sonrriente.png" alt="Imagen derecha" class="reflexion-img" />
+    <button class="btn-reflexion mt-6">Siguiente</button>
+  </div>
+  <div class="pantalla fondo-color hidden border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
+    <h2 class="text-4xl font-bold drop-shadow-md">🎈 ¡MUCHAS 🌟FELICIDADES SUPERASTE ESTE RETO! 🎈</h2>
+    <p>Gracias por participar y reflexionar sobre tus acciones.</p>
+    <button class="btn-reflexion mt-6">Volver al inicio</button>
+  </div>
+</div>
+
 `;
+    
 
     const componente = this;
     let vidas = 3;
@@ -324,28 +334,33 @@ class PasoUnoDos extends HTMLElement {
               if (btnFinalizar) btnFinalizar.classList.remove('hidden');
 
               btnFinalizar.addEventListener('click', () => {
-                componente.querySelector('#cuestionario').classList.add('hidden');
-                const reflexion = componente.querySelector('#reflexion');
-                reflexion.classList.remove('hidden');
+  componente.querySelector('#cuestionario').classList.add('hidden');
 
-                const pantallas = Array.from(reflexion.querySelectorAll('.pantalla'));
-                pantallas.forEach(p => p.classList.add('hidden'));
-                pantallas[0].classList.remove('hidden');
+  const reflexion = componente.querySelector('#reflexion');
+  reflexion.classList.remove('hidden');
 
-                pantallas.forEach((pantalla, i) => {
-                  const btn = pantalla.querySelector('.btn-reflexion');
-                  if (btn) {
-                    btn.onclick = () => {
-                      pantalla.classList.add('hidden');
-                      if (pantallas[i + 1]) {
-                        pantallas[i + 1].classList.remove('hidden');
-                      } else {
-                        location.reload(); // Reinicia el juego
-                      }
-                    };
-                  }
-                });
-              }, { once: true });
+  const pantallas = Array.from(reflexion.querySelectorAll('.pantalla'));
+
+  // Asegúrate de ocultar todas primero
+  pantallas.forEach(p => p.classList.add('hidden'));
+
+  // Mostrar solo la primera
+  let index = 0;
+  pantallas[index].classList.remove('hidden');
+
+  function mostrarSiguientePantalla() {
+    pantallas[index].classList.add('hidden');
+    index++;
+    if (pantallas[index]) pantallas[index].classList.remove('hidden');
+    else location.reload();
+  }
+
+  pantallas.forEach(p => {
+    const btn = p.querySelector('.btn-reflexion');
+    if (btn) btn.addEventListener('click', mostrarSiguientePantalla);
+  });
+}, { once: true });
+
             }
           }, 1500);
         } else {
