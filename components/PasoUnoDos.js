@@ -129,8 +129,6 @@ class PasoUnoDos extends HTMLElement {
         /* =================== ESTILOS REFLEXIÓN =================== */
         .hidden { display: none; }
         .pantalla { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 2rem; gap: 1.5rem; }
-        .btn-reflexion { background: linear-gradient(90deg,#4f46e5,#3b82f6,#6366f1); color:white; font-weight:bold; padding:1rem 2rem; border-radius:0.75rem; font-size:1.25rem; cursor:pointer; transition: all 0.3s ease; box-shadow:0 5px 10px rgba(0,0,0,0.3); }
-        .btn-reflexion:hover { transform: scale(1.05); background: linear-gradient(90deg,#6366f1,#3b82f6,#4f46e5); }
         .reflexion-contenedor { background: rgba(0,0,0,0.25); padding:2rem; border-radius:1rem; max-width:900px; box-shadow:0 0 15px rgba(0,0,0,0.3); }
         .reflexion-img { width: 20rem; max-width: 80vw; border-radius:0.75rem; box-shadow:0 0 15px rgba(95, 94, 94, 0.5); }
       </style>
@@ -153,16 +151,16 @@ class PasoUnoDos extends HTMLElement {
           <div style="display:flex; flex-direction: column; gap: 1.5rem; max-width: 850px; margin: 0 auto;">
             ${
               [
-                ["A. Teacher Walter es muy exigente","B. Mandaste un mensaje irrespetuoso al teacher","C. El grupo de WhatsApp confunde"],
-                ["A. Teacher Walter lo toma como broma","B. Podés perder puntos o recibir un llamado de atención","C. Te toca hablar con Coordinación"],
+                ["A. Teacher Walter es muy exigente.","B. Mandaste un mensaje irrespetuoso al teacher.","C. El grupo de WhatsApp confunde."],
+                ["A. Teacher Walter lo toma como broma.","B. Podés perder puntos o recibir un llamado de atención.","C. Te toca hablar con Coordinación."],
                 ["A. Que no pase a más.","B. Que teacher Walter entienda tu punto.","C. Que nadie se entere jamás."],
-                ["A. Borrás el mensaje y hacés como si nada","B. Le escribís una disculpa","C. Mandás un sticker gracioso que diga 'ja ja es broma'"],
-                ["A. Teacher Walter se enoja y afecta tu nota","B. Todo se olvida sin problemas","C. El grupo se vuelve más divertido"],
-                ["A. Ignorar el mensaje","B. Pedir disculpas de manera respetuosa","C. Mandar un mensaje confuso para evitar problemas"],
-                ["A. A un amigo para que haga la disculpa","B. A un adulto de confianza para pedir consejo","C. Al grupo de WhatsApp para que te apoyen"],
-                ["A. Ser honesto y responsable","B. Justificarte con excusas","C. Ignorar el problema y esperar que pase"],
-                ["A. Revisar los mensajes antes de enviarlos","B. Evitar contacto con el profesor","C. Pedir ayuda siempre"],
-                ["A. Con una disculpa y compromiso de mejorar","B. Con un mensaje gracioso que intente arreglar todo","C. Ignorando la situación"]
+                ["A. Borrás el mensaje y hacés como si nada.","B. Le escribís una disculpa.","C. Mandás un sticker gracioso que diga 'ja ja es broma'."],
+                ["A. Teacher Walter se enoja y afecta tu nota.","B. Todo se olvida sin problemas.","C. El grupo se vuelve más divertido."],
+                ["A. Ignorar el mensaje.","B. Pedir disculpas de manera respetuosa.","C. Mandar un mensaje confuso para evitar problemas."],
+                ["A. A un amigo para que haga la disculpa.","B. A un adulto de confianza para pedir consejo.","C. Al grupo de WhatsApp para que te apoyen."],
+                ["A. Ser honesto y responsable.","B. Justificarte con excusas.","C. Ignorar el problema y esperar que pase."],
+                ["A. Revisar los mensajes antes de enviarlos.","B. Evitar contacto con el profesor.","C. Pedir ayuda siempre."],
+                ["A. Con una disculpa y compromiso de mejorar.","B. Con un mensaje gracioso que intente arreglar todo.","C. Ignorando la situación."]
               ][paso-1].map((opcion,i)=>{
                 const letra = ["A","B","C"][i];
                 return `<button onclick="validarPaso${paso}('${letra}')" class="opcion-btn ${["B","B","A","B","A","B","B","A","A","A"][paso-1]!==letra?'mala':''}">${opcion}</button>`;
@@ -224,11 +222,11 @@ class PasoUnoDos extends HTMLElement {
   <h2 class="text-4xl font-bold drop-shadow-md mt-6">🎈 ¡MUCHAS 🌟FELICIDADES SUPERASTE ESTE RETO! 🎈</h2>
   <p class="text-lg mb-6">Gracias por participar y reflexionar sobre tus acciones.</p>
 
-  <button class="btn-reflexion px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors">
+  <!-- BOTÓN VERDE IGUAL A LOS OTROS -->
+  <button class="opcion-btn" onclick="location.reload();">
     Volver al inicio
-  </button>
+  </button>  
 </div>
-
 
 `;
     
