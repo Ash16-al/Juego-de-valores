@@ -141,7 +141,7 @@ class PasoUnoDos extends HTMLElement {
 
       ${[1,2,3,4,5,6,7,8,9,10].map(paso => `
         <div id="paso${paso}" class="${paso===1?'animate-fadeIn':'hidden animate-fadeIn '}" style="z-index:10;">
-        <div class="border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
+        <div class="border-10 border-green-500 rounded-xl p-6 bg-[url('img/fondo.webp')] backdrop-blur-md">
           <h2 id="titulo">🧩 PASO ${paso} – ${
             ["RECONOCER EL PROBLEMA","ANALIZAR EL PROBLEMA","CONSIDERAR METAS","BUSCAR ALTERNATIVAS","EVALUAR CONSECUENCIAS","ELEGIR ACCIÓN","PEDIR AYUDA","RESOLVER CONFLICTOS","APRENDER DE LA EXPERIENCIA","CERRAR LA SITUACIÓN"][paso-1]
           }</h2>
@@ -183,7 +183,7 @@ class PasoUnoDos extends HTMLElement {
   <!-- =================== REFLEXIÓN =================== -->
 <div id="reflexion" class="hidden flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6 gap-6 text-center fondo-color">
 
-  <h1 class="text-6xl font-bold drop-shadow-lg rounded-xl p-6 bg-[url('/img/fondo.webp')] bg-cover bg-center backdrop-blur-md">
+  <h1 class="text-6xl font-bold drop-shadow-lg rounded-xl p-6 bg-[url('img/fondo.webp')] bg-cover bg-center backdrop-blur-md">
     🌟FELICIDADES LLEGASTE AL FINAL🌟
   </h1>
 
@@ -216,7 +216,7 @@ class PasoUnoDos extends HTMLElement {
         Pedir perdón no disminuye tu valor, lo engrandece🌟
       </p>
     </div>
-    <img src="Img/ninosonriente.png" alt="Imagen derecha" class="w-40 h-40 object-contain" />
+    <img src="img/ninosonriente.png" alt="Imagen derecha" class="w-40 h-40 object-contain" />
   </div>
 
   <h2 class="text-4xl font-bold drop-shadow-md mt-6">🎈 ¡MUCHAS 🌟FELICIDADES SUPERASTE ESTE RETO! 🎈</h2>
