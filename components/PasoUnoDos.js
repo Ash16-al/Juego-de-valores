@@ -5,7 +5,7 @@ class PasoUnoDos extends HTMLElement {
         /* =================== ESTILOS DEL JUEGO =================== */
         
         .fondo-dinamico {
-          background-image: url('/img/fondo..png'); 
+          background-image: url('img/fondo..png'); 
           background-size: cover;          
           background-repeat: no-repeat;    
           background-position: center;
@@ -210,7 +210,7 @@ class PasoUnoDos extends HTMLElement {
   </ul>
 
   <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-6">
-    <img src="Img/Niña sonrriente.png" alt="Imagen izquierda" class="w-40 h-40 object-contain" />
+    <img src="img/ninasonriente.png" alt="Imagen izquierda" class="w-40 h-40 object-contain" />
     <div class="text-center md:text-left max-w-xl">
       <h2 class="text-4xl font-bold mb-4 drop-shadow-md">🎉 "¡Recuerda!" 🎉</h2>
       <p class="text-lg font-semibold leading-relaxed">
@@ -218,7 +218,7 @@ class PasoUnoDos extends HTMLElement {
         Pedir perdón no disminuye tu valor, lo engrandece🌟
       </p>
     </div>
-    <img src="Img/Niño sonrriente.png" alt="Imagen derecha" class="w-40 h-40 object-contain" />
+    <img src="Img/ninosonriente.png" alt="Imagen derecha" class="w-40 h-40 object-contain" />
   </div>
 
   <h2 class="text-4xl font-bold drop-shadow-md mt-6">🎈 ¡MUCHAS 🌟FELICIDADES SUPERASTE ESTE RETO! 🎈</h2>
