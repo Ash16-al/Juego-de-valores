@@ -183,57 +183,61 @@ class PasoUnoDos extends HTMLElement {
   </div>
 
   <!-- =================== REFLEXIÓN =================== -->
-  <div id="reflexion" class="hidden">
-  <div class="pantalla fondo-color hidden">
-    <h1 class="text-6xl font-bold drop-shadow-lg border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">🌟FELICIDADES LLEGASTE AL FINAL🌟</h1>
-    <p class="mt-4">¡Gran trabajo completando todos los pasos!</p>
-    <button class="btn-reflexion mt-6" id="un">Siguiente</button>
-  </div>
-  <div id="uni" class="pantalla fondo-color hidden border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
-    <h2 class="text-4xl font-bold drop-shadow-md">- REFLEXIONA -</h2>
-    <div>
-      <p>✅ "Un error no define quién eres, pero tu valentía para admitirlo y repararlo sí"</p>
-      <p>
-        Aceptar nuestros errores es reconocer que no somos perfectos, pero sí capaces de mejorar.<br>
-        Es entender que cada fallo es una lección disfrazada de tropiezo.<br>
-        Es dejar el orgullo a un lado para darle paso a la humildad y al aprendizaje.<br>
-        Porque solo quien asume su responsabilidad puede crecer de verdad.
-      </p>
-    </div>
-    <button class="btn-reflexion mt-6">Siguiente</button>
-  </div>
-  <div class="pantalla fondo-color hidden border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
-    <h2 class="text-4xl font-bold drop-shadow-md">- TOMA DECISIONES -</h2>
-    <p class="text-xl">¿Qué harías la próxima vez?</p>
-    <ul class="text-lg font-bold list-disc list-inside mt-4">
-      <li>A. Ignorar el problema</li>
-      <li>B. Hacerte la víctima</li>
-      <li>C. Pedir disculpas sinceras</li>
-      <li>😃Quien asume su responsabilidad, conquista el respeto de los demás y la paz consigo mismo.😃</li>
-    </ul>
-    <button class="btn-reflexion mt-6">Siguiente</button>
-  </div>
-  <div class="pantalla fondo-color hidden md:flex-row gap-6 border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
-    <img src="Img/Niña sonrriente.png" alt="Imagen izquierda" class="reflexion-img" />
-    <div class="reflexion-contenedor text-center md:text-left">
+<div id="reflexion" class="hidden flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6 gap-6 text-center fondo-color">
+
+  <h1 class="text-6xl font-bold drop-shadow-lg rounded-xl p-6 bg-[url('/img/fondo.webp')] bg-cover bg-center backdrop-blur-md">
+    🌟FELICIDADES LLEGASTE AL FINAL🌟
+  </h1>
+
+  <p class="text-xl">¡Gran trabajo completando todos los pasos!</p>
+
+  <h2 class="text-4xl font-bold drop-shadow-md">- REFLEXIONA -</h2>
+  <p class="text-lg max-w-2xl">
+    ✅ "Un error no define quién eres, pero tu valentía para admitirlo y repararlo sí"<br>
+    Aceptar nuestros errores es reconocer que no somos perfectos, pero sí capaces de mejorar.<br>
+    Es entender que cada fallo es una lección disfrazada de tropiezo.<br>
+    Es dejar el orgullo a un lado para darle paso a la humildad y al aprendizaje.<br>
+    Porque solo quien asume su responsabilidad puede crecer de verdad.
+  </p>
+
+  <h2 class="text-4xl font-bold drop-shadow-md mt-6">- TOMA DECISIONES -</h2>
+  <p class="text-xl">¿Qué harías la próxima vez?</p>
+  <ul class="text-lg font-bold list-disc list-inside mt-4 max-w-xl">
+    <li>A. Ignorar el problema</li>
+    <li>B. Hacerte la víctima</li>
+    <li>C. Pedir disculpas sinceras</li>
+    <li>😃Quien asume su responsabilidad, conquista el respeto de los demás y la paz consigo mismo.😃</li>
+  </ul>
+
+  <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-6">
+    <img src="Img/Niña sonrriente.png" alt="Imagen izquierda" class="w-40 h-40 object-contain" />
+    <div class="text-center md:text-left max-w-xl">
       <h2 class="text-4xl font-bold mb-4 drop-shadow-md">🎉 "¡Recuerda!" 🎉</h2>
       <p class="text-lg font-semibold leading-relaxed">
         🌟Si alguna vez te equivocas, no pierdas tiempo buscando culpables ni excusas. Mira de frente tu error, reconoce el daño y repara lo que esté en tus manos.<br>
         Pedir perdón no disminuye tu valor, lo engrandece🌟
       </p>
     </div>
-    <img src="Img/Niño sonrriente.png" alt="Imagen derecha" class="reflexion-img" />
-    <button class="btn-reflexion mt-6">Siguiente</button>
+    <img src="Img/Niño sonrriente.png" alt="Imagen derecha" class="w-40 h-40 object-contain" />
   </div>
-  <div class="pantalla fondo-color hidden border-10 border-green-500 rounded-xl p-6 bg-[url('/img/fondo.webp')] backdrop-blur-md">
-    <h2 class="text-4xl font-bold drop-shadow-md">🎈 ¡MUCHAS 🌟FELICIDADES SUPERASTE ESTE RETO! 🎈</h2>
-    <p>Gracias por participar y reflexionar sobre tus acciones.</p>
-    <button class="btn-reflexion mt-6">Volver al inicio</button>
-  </div>
+
+  <h2 class="text-4xl font-bold drop-shadow-md mt-6">🎈 ¡MUCHAS 🌟FELICIDADES SUPERASTE ESTE RETO! 🎈</h2>
+  <p class="text-lg mb-6">Gracias por participar y reflexionar sobre tus acciones.</p>
+
+  <button class="btn-reflexion px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors">
+    Volver al inicio
+  </button>
 </div>
+
 
 `;
     
+  const btnVolver = this.querySelector('#reflexion .btn-reflexion');
+if (btnVolver) {
+  btnVolver.addEventListener('click', () => {
+    location.reload(); // recarga la página para reiniciar todo
+  });
+}
 
     const componente = this;
     let vidas = 3;
