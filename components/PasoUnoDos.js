@@ -153,16 +153,16 @@ class PasoUnoDos extends HTMLElement {
           <div style="display:flex; flex-direction: column; gap: 1.5rem; max-width: 850px; margin: 0 auto;">
             ${
               [
-                ["A. Teacher Walter es muy exigente","B. Mandaste un mensaje irrespetuoso al teacher","C. El grupo de WhatsApp confunde"],
-                ["A. Teacher Walter lo toma como broma","B. Podés perder puntos o recibir un llamado de atención","C. Te toca hablar con Coordinación"],
+                ["A. Teacher Walter es muy exigente.","B. Mandaste un mensaje irrespetuoso al teacher.","C. El grupo de WhatsApp confunde."],
+                ["A. Teacher Walter lo toma como broma.","B. Podés perder puntos o recibir un llamado de atención.","C. Te toca hablar con Coordinación."],
                 ["A. Que no pase a más.","B. Que teacher Walter entienda tu punto.","C. Que nadie se entere jamás."],
-                ["A. Borrás el mensaje y hacés como si nada","B. Le escribís una disculpa","C. Mandás un sticker gracioso que diga 'ja ja es broma'"],
-                ["A. Teacher Walter se enoja y afecta tu nota","B. Todo se olvida sin problemas","C. El grupo se vuelve más divertido"],
-                ["A. Ignorar el mensaje","B. Pedir disculpas de manera respetuosa","C. Mandar un mensaje confuso para evitar problemas"],
-                ["A. A un amigo para que haga la disculpa","B. A un adulto de confianza para pedir consejo","C. Al grupo de WhatsApp para que te apoyen"],
-                ["A. Ser honesto y responsable","B. Justificarte con excusas","C. Ignorar el problema y esperar que pase"],
-                ["A. Revisar los mensajes antes de enviarlos","B. Evitar contacto con el profesor","C. Pedir ayuda siempre"],
-                ["A. Con una disculpa y compromiso de mejorar","B. Con un mensaje gracioso que intente arreglar todo","C. Ignorando la situación"]
+                ["A. Borrás el mensaje y hacés como si nada.","B. Le escribís una disculpa.","C. Mandás un sticker gracioso que diga 'ja ja es broma'."],
+                ["A. Teacher Walter se enoja y afecta tu nota.","B. Todo se olvida sin problemas.","C. El grupo se vuelve más divertido."],
+                ["A. Ignorar el mensaje.","B. Pedir disculpas de manera respetuosa.","C. Mandar un mensaje confuso para evitar problemas."],
+                ["A. A un amigo para que haga la disculpa.","B. A un adulto de confianza para pedir consejo.","C. Al grupo de WhatsApp para que te apoyen."],
+                ["A. Ser honesto y responsable.","B. Justificarte con excusas.","C. Ignorar el problema y esperar que pase."],
+                ["A. Revisar los mensajes antes de enviarlos.","B. Evitar contacto con el profesor.","C. Pedir ayuda siempre."],
+                ["A. Con una disculpa y compromiso de mejorar.","B. Con un mensaje gracioso que intente arreglar todo.","C. Ignorando la situación."]
               ][paso-1].map((opcion,i)=>{
                 const letra = ["A","B","C"][i];
                 return `<button onclick="validarPaso${paso}('${letra}')" class="opcion-btn ${["B","B","A","B","A","B","B","A","A","A"][paso-1]!==letra?'mala':''}">${opcion}</button>`;
